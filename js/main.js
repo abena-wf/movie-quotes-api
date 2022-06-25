@@ -1,10 +1,10 @@
 document.querySelector('button').addEventListener('click', apiRequest)
 
 async function apiRequest(){
+    const movieGenre = document.querySelector('input').value
     try{
-        const movieGenre = document.querySelector('input').value;
-        const response = await fetch(`https://a-movie-quotes-api.herokuapp.com/api/${movieGenre}`);
-        const data = await response.json();
+        const response = await fetch(`https://a-movie-quotes-api.herokuapp.com/api/${movieGenre}`)
+        const data = await response.json()
 
         console.log(data)
         data.forEach(el =>{

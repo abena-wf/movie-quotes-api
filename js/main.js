@@ -1,19 +1,36 @@
 document.querySelector('button').addEventListener('click', apiRequest)
 
-async function apiRequest(){
-    try{
-        const movieGenre = document.querySelector('input').value;
-        const response = await fetch(`https://localhost:8080/api/${movieGenre}`);
-        const data = await response.json();
 
-        console.log(data)
-        data.forEach(el =>{
-            const li = document.createElement('li')
-            li.innerText = '~ '+ el
-            document.querySelector('ul').appendChild(li)
+async function apiRequest(){
+    const movieGenre = document.querySelector('input').value   
+    try{
+        const response = await fetch(`http://localhost:8080/${movieGenre}`)
+        const data = await response.json()
         
-        })
+        console.log(movieGenre)
+        console.log(data)
+        for(let i=0; i< data.one.length;i++){
+            const li = document.createElement('li')
+            li.innerText= '~  '+ data.one[i] 
+            li.style.listStyle= 'none'
+            li.style.marginBottom= '20px'
+            li.style.fontSize= '16px'
+            document.querySelector('ul').appendChild(li)
+
+        
+        }
     }catch(err){
-        console.log(err)
+        console.log(`Error ${err}`)
+        /*const li = document.createElement('li')
+        li.innerText='Not found'
+        li.style.listStyle= 'none'
+        //li.style.fontFamily="'Courier New', Courier, monospace'"//
+        document.querySelector('ul').appendChild(li)*/
+
     }
 }
+//finally worked after MONTHS! 
+//const holding objects were not in json
+//made res.data displayed as json with the array embeded instead of the raw array
+//used forEach(el) instead of forEach(el, i) (needed the i to iterate with not the el) or just a simple for loop
+//did not even think of changing the forEach loop

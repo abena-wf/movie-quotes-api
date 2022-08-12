@@ -3,7 +3,7 @@ document.querySelector('.search').addEventListener('click', apiRequest)
 async function apiRequest(){
     const movieGenre = document.querySelector('input').value 
     try{
-        const response = await fetch(`http://localhost:8000/${movieGenre}`)
+        const response = await fetch(`https://a-movie-quotes-api.herokuapp.com/${movieGenre}`)
         const data = await response.json()
 
         console.log(data)

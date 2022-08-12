@@ -17,8 +17,14 @@ async function apiRequest(){
         }
     }catch(err){
         console.log(`Error ${err}`)
+        /*const li = document.createElement('li')
+        li.innerText='Not found'
+        li.style.listStyle= 'none'
+        document.querySelector('ul').appendChild(li)*/
+
     }
 }
+//finally worked after MONTHS! 
 //const holding objects were not in json
 //made res.data displayed as json with the array embeded instead of the raw array
 //used forEach(el) instead of forEach(el, i) (needed the i to iterate with not the el) or just a simple for loop
